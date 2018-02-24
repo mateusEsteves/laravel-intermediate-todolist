@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/tasks', 'TaskController@index');
 Route::post('/task', 'TaskController@add');
-Route::delete('/task/{id}', 'TaskController@delete');
+Route::delete('/task/{task}', 'TaskController@delete');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use Illuminate\Http\Request;
 use App\Repositories\TaskRepository;
 
@@ -27,6 +28,15 @@ class TaskController extends Controller
         $request->user()->tasks()->create([
             'name' => $request->name
         ]);
+
+        return redirect('/tasks');
+    }
+
+
+    public function delete(Request $request, Task $task){
+        $this->authorize('delete', $task);
+
+        $task->delete();
 
         return redirect('/tasks');
     }
